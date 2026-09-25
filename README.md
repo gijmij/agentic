@@ -4,15 +4,14 @@ The core differences, similarities, and architecture alignment can help determin
 ## Core Differences
 The primary differentiator lies in how the agent decides its next move.
 
-* 
 * Orchestration & Planning Paradigm:
-* Google ADK: Uses the classic Reactive LLM loop. You provide instructions and tools (e.g., GoogleMapsTool, UrlContextTool). The Large Language Model (LLM) itself dynamically decides at runtime whether to call a tool, interpret the response, or reply to the user.
+   * Google ADK: Uses the classic Reactive LLM loop. You provide instructions and tools (e.g., GoogleMapsTool, UrlContextTool). The Large Language Model (LLM) itself dynamically decides at runtime whether to call a tool, interpret the response, or reply to the user.
    * Embabel: Utilizes a non-LLM algorithmic Goal-Oriented Action Planning (GOAP) model borrowed from video game AI. Instead of letting the LLM wander, you define explicit @Action steps and @AchievesGoal annotations in Java/Kotlin. An deterministic $A^*$ pathfinding planner searches for a sequence of actions that satisfies preconditions and postconditions. The LLM handles localized reasoning, but Java code enforces the macro-workflow structure. [4, 5, 6, 7, 8] 
 * Ecosystem & Framework Foundations:
-* Google ADK: Built specifically as an extension of the Google Cloud / Vertex AI ecosystem. It natively couples with Google’s first-party agent tools, Gemini models, Google Cloud Firestore, and Google Cloud Storage.
+   * Google ADK: Built specifically as an extension of the Google Cloud / Vertex AI ecosystem. It natively couples with Google’s first-party agent tools, Gemini models, Google Cloud Firestore, and Google Cloud Storage.
    * Embabel: Built on top of the Spring AI component model and heavily targets Spring Boot applications. It acts as a higher-level abstraction (analogous to Spring MVC sitting over the Servlet API). It is inherently provider-agnostic, integrating tightly with OpenAI, Anthropic, Ollama, or AWS Bedrock. [9, 10, 11, 12] 
 * Inter-Agent Communication:
-* Google ADK: Features native support for the official Agent2Agent (A2A) Protocol. This allows an ADK Java agent to discover and seamlessly collaborate with remote agents built across entirely different languages or frameworks.
+   * Google ADK: Features native support for the official Agent2Agent (A2A) Protocol. This allows an ADK Java agent to discover and seamlessly collaborate with remote agents built across entirely different languages or frameworks.
    * Embabel: Focuses heavily on local multi-agent composition and Model Context Protocol (MCP) servers, prioritizing type-safe domain models and object passing between local JVM modules. [4, 13, 14, 15] 
 * 
 
@@ -20,7 +19,6 @@ The primary differentiator lies in how the agent decides its next move.
 ## Key Similarities
 Despite their different architectures, both frameworks share an identical mission for Java developers:
 
-* 
 * Human-in-the-Loop (HITL): Both recognize that enterprise agents cannot run entirely autonomously. Google ADK uses ToolConfirmation workflows to pause execution for human intervention. Embabel enforces strict checkpoints through its deterministic actions and step-validation layers. [8, 14] 
 * Context Engineering & State Management: Both frameworks move beyond basic stateless prompt chains. Google ADK offers built-in event compaction to manage token sliding windows and automated event summarization. Embabel provides structure-aware, agentic RAG and process persistence (via JCache or memory-backed storage) to safely manage stateful long-running workflows. [16, 17] 
 * First-Class JVM Design: Both treat the agent as a structured Java object, allowing developers to write testable code using standard practices like Mockito or JUnit. [18, 19] 
@@ -53,11 +51,10 @@ Despite their different architectures, both frameworks share an identical missio
 
 To help narrow this down, could you share a few details about your intended agent:
 
-* 
 * What specific task or business process will the agent execute?
 * Is your existing application built on Spring Boot, or are you deployed primarily in Google Cloud / Vertex AI?
 * Does the agent need to interact mostly with local databases/services or with external APIs and web data?
-* 
+
 
 
 [1] [https://www.javacodegeeks.com](https://www.javacodegeeks.com/2026/04/prompt-engineering-is-not-enough-how-java-developers-should-structure-ai-agent-workflows-using-embabel-or-koog.html)
