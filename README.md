@@ -1,3 +1,7 @@
+Found article:
+Java AI agent frameworks in 2026: a practical comparison
+https://codewiz.info/blog/java-ai-agent-frameworks-2026/
+
 Both the [Google Agent Development Kit (ADK) for Java](https://developers.googleblog.com/announcing-adk-for-java-100-building-the-future-of-ai-agents-in-java/) and Rod Johnson's [Embabel](https://github.com/embabel/embabel-agent) frameworks represent a massive shift toward building production-ready AI agents natively on the JVM, allowing enterprise teams to bypass Python-centric ecosystems. However, they approach agent orchestration and runtime management from fundamentally different paradigms. [1, 2, 3] 
 The core differences, similarities, and architecture alignment can help determine which framework is better suited for a specific agentic use case.
 ------------------------------
